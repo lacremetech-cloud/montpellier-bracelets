@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Petit Trèfle Montpellier</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Bracelets trèfle en acier inoxydable à 7 € la pièce. Bleu, vert ou rose. Remise en main propre sur Montpellier, réservation par WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Caveat:wght@500;700&family=Nunito:wght@400;600;700;800;900&display=swap">
+<style>
+/* Layout : une seule colonne façon flyer, photo inclinée + gros titre brush, puis boutique → créneau → WhatsApp */
+:root{
+  --bg:#fbf1ec;          /* papier rosé du flyer */
+  --paper:#fffaf7;       /* cartes */
+  --ink:#2a1420;         /* prune presque noire des titres */
+  --muted:#7b5d68;
+  --pink:#e6247c;        /* rose fuchsia du prix */
+  --pink-soft:#f9d3e2;   /* trait de surligneur */
+  --line:#efd9df;
+  --wa:#1fa855;
+  --on-pink:#ffffff;
+  --blue:#2f6fe0; --green:#1f9a5c; --rose:#e2479a;
+  --shadow:0 18px 40px -22px rgba(120,30,70,.45);
+  --f-display:"Caveat Brush","Caveat","Segoe Print","Comic Sans MS",cursive;
+  --f-hand:"Caveat","Segoe Print","Comic Sans MS",cursive;
+  --f-body:"Nunito",ui-rounded,"Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#1d1117;--paper:#291820;--ink:#fbe9f0;--muted:#cfaebb;--pink:#ff4f9b;--pink-soft:#5a2340;--line:#43293a;--wa:#25c264;--on-pink:#ffffff;
+  --blue:#6b9cff;--green:#4cc98a;--rose:#ff79bd;--shadow:0 18px 40px -22px rgba(0,0,0,.8);color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1d1117;--paper:#291820;--ink:#fbe9f0;--muted:#cfaebb;--pink:#ff4f9b;--pink-soft:#5a2340;--line:#43293a;--wa:#25c264;--on-pink:#ffffff;
+  --blue:#6b9cff;--green:#4cc98a;--rose:#ff79bd;--shadow:0 18px 40px -22px rgba(0,0,0,.8);color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{margin:0;text-wrap:balance;line-height:1}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--pink);outline-offset:3px;border-radius:8px}
+
+/* surligneur pinceau */
+.brush{position:relative;display:inline-block;padding:.05em .45em .12em;color:var(--on-pink);z-index:0}
+.brush::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--pink);
+  clip-path:polygon(2% 12%,10% 4%,30% 9%,52% 2%,74% 8%,96% 3%,99% 30%,97% 58%,100% 88%,82% 95%,60% 91%,38% 98%,16% 93%,1% 97%,3% 70%,0 40%);transform:rotate(-1.5deg)}
+.hl{position:relative;z-index:0;white-space:nowrap}
+.hl::after{content:"";position:absolute;left:-4%;right:-4%;bottom:.05em;height:.42em;background:var(--pink-soft);z-index:-1;border-radius:3px;transform:rotate(-1deg)}
+
+/* ===== header ===== */
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:18px}
+.logo{display:flex;align-items:center;gap:8px;font-family:var(--f-display);font-size:1.7rem;text-decoration:none}
+.logo svg{width:30px;height:30px}
+.top .where{font-weight:800;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:6px}
+
+/* ===== hero ===== */
+.hero{display:grid;grid-template-columns:1fr 1.05fr;gap:40px;align-items:center;padding-block:10px 48px}
+.hero-photo{position:relative;justify-self:center;width:min(100%,420px)}
+.hero-photo .frame{border-radius:26px;overflow:hidden;box-shadow:var(--shadow);transform:rotate(-3deg);border:8px solid var(--paper);aspect-ratio:398/520;max-width:100%}
+.hero-photo img{display:block;width:100%;height:100%;object-fit:cover}
+.price{position:absolute;right:-14px;bottom:28px;transform:rotate(-6deg);text-align:center;font-family:var(--f-display);line-height:.9}
+.price .brush{font-size:4.6rem;padding:.12em .35em .18em}
+.price small{display:block;margin-top:6px;font-family:var(--f-hand);font-weight:700;font-size:1.55rem;color:var(--ink);background:var(--pink-soft);padding:0 .5em;border-radius:6px;transform:rotate(3deg)}
+.heart{position:absolute;color:var(--pink)}
+.hero-photo .heart{left:-10px;top:-18px;width:54px;transform:rotate(-14deg)}
+
+.hero-text .kicker{font-family:var(--f-hand);font-size:1.8rem;font-weight:700;color:var(--muted);transform:rotate(-2deg);display:inline-block}
+.hero-text h1{font-family:var(--f-display);font-weight:400;font-size:clamp(3.2rem,8vw,5.6rem);letter-spacing:-.01em;margin-top:4px}
+.hero-text h1 .b{display:block;color:var(--pink);font-size:1.15em;margin-top:.04em}
+.hero-text .sub{margin-top:18px;max-width:34ch;font-size:1.08rem;color:var(--muted)}
+.hero-text .sub strong{color:var(--ink)}
+.checks{list-style:none;padding:0;margin:22px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;max-width:420px}
+.checks li{display:flex;align-items:center;gap:9px;font-weight:700}
+.checks svg{flex:none;width:22px;height:22px}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:28px}
+.btn{appearance:none;border:0;cursor:pointer;font:inherit;font-weight:900;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:999px;padding:15px 26px;font-size:1.05rem;transition:transform .15s ease,box-shadow .15s ease,opacity .15s}
+.btn-pink{background:var(--pink);color:var(--on-pink);box-shadow:0 10px 22px -10px var(--pink)}
+.btn-pink:hover{transform:translateY(-2px)}
+.tag-steel{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:.95rem;background:var(--paper);border:2px solid var(--line);border-radius:999px;padding:8px 16px}
+
+/* ===== ruban ===== */
+.ribbon-wrap{overflow:hidden;padding-block:14px}
+.ribbon{background:var(--pink);color:var(--on-pink);overflow:hidden;transform:rotate(-1.2deg);margin:8px -20px 0;padding-block:12px}
+.ribbon-track{display:flex;gap:34px;width:max-content;animation:scroll 32s linear infinite;font-family:var(--f-display);font-size:1.6rem;white-space:nowrap}
+.ribbon-track span{display:inline-flex;align-items:center;gap:34px}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* ===== sections ===== */
+section.block{padding-block:64px 8px}
+.sec-head{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;margin-bottom:34px}
+.step{font-weight:900;font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:var(--pink)}
+.sec-head h2{font-family:var(--f-display);font-weight:400;font-size:clamp(2.4rem,6vw,3.4rem)}
+.sec-head p{color:var(--muted);max-width:46ch}
+
+/* produits */
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:var(--paper);border:2px solid var(--line);border-radius:28px;padding:22px 20px 20px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;transition:border-color .2s,transform .2s,box-shadow .2s}
+.card.on{border-color:var(--c);box-shadow:var(--shadow);transform:translateY(-3px)}
+.thumb{position:relative;width:min(190px,100%);aspect-ratio:1;border-radius:50%;overflow:hidden;border:6px solid var(--bg);box-shadow:0 0 0 2px var(--line)}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.cname{font-family:var(--f-display);font-size:2.1rem;line-height:1;color:#fff;padding:.08em .6em .14em;position:relative;z-index:0;margin-top:-34px}
+.cname::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--c);clip-path:polygon(3% 10%,24% 3%,50% 8%,78% 2%,98% 9%,96% 45%,100% 90%,74% 97%,48% 92%,22% 99%,1% 92%,4% 52%);transform:rotate(-3deg)}
+.cdesc{font-size:.93rem;color:var(--muted);min-height:2.9em}
+.stepper{display:flex;align-items:center;gap:6px;background:var(--bg);border-radius:999px;padding:5px}
+.stepper button{appearance:none;border:0;width:42px;height:42px;border-radius:50%;background:var(--paper);color:var(--ink);font:inherit;font-size:1.4rem;font-weight:900;cursor:pointer;line-height:1;box-shadow:0 1px 0 var(--line)}
+.stepper button:hover:not(:disabled){background:var(--c);color:#fff}
+.stepper button:disabled{opacity:.35;cursor:not-allowed}
+.stepper output{min-width:46px;text-align:center;font-weight:900;font-size:1.25rem;font-variant-numeric:tabular-nums}
+.sub-price{font-weight:800;font-size:.9rem;color:var(--muted);font-variant-numeric:tabular-nums;min-height:1.4em}
+
+/* créneau */
+.panel{background:var(--paper);border:2px solid var(--line);border-radius:28px;padding:26px clamp(16px,4vw,34px)}
+.field + .field{margin-top:26px}
+.label{display:flex;align-items:baseline;justify-content:space-between;gap:10px;font-weight:900;margin-bottom:12px}
+.label small{font-weight:600;color:var(--muted)}
+.days{display:flex;gap:10px;overflow-x:auto;padding:4px 2px 10px;scroll-snap-type:x proximity;scrollbar-width:thin}
+.day{flex:none;scroll-snap-align:start;appearance:none;font:inherit;cursor:pointer;border:2px solid var(--line);background:var(--bg);color:var(--ink);border-radius:18px;width:74px;padding:10px 4px;display:flex;flex-direction:column;align-items:center;gap:1px;transition:.15s}
+.day .dw{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.day .dn{font-family:var(--f-display);font-size:2rem;line-height:1}
+.day .dm{font-size:.78rem;font-weight:700;color:var(--muted)}
+.day:hover{border-color:var(--pink)}
+.day[aria-pressed="true"]{background:var(--pink);border-color:var(--pink);color:var(--on-pink)}
+.day[aria-pressed="true"] .dw,.day[aria-pressed="true"] .dm{color:var(--on-pink)}
+.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.slot{appearance:none;font:inherit;cursor:pointer;border:2px solid var(--line);background:var(--bg);color:var(--ink);border-radius:16px;padding:12px 14px;text-align:left;display:flex;flex-direction:column;gap:2px;transition:.15s}
+.slot b{font-size:1.05rem;font-variant-numeric:tabular-nums}
+.slot span{font-size:.82rem;color:var(--muted);font-weight:600}
+.slot:hover{border-color:var(--pink)}
+.slot[aria-pressed="true"]{background:var(--pink);border-color:var(--pink);color:var(--on-pink)}
+.slot[aria-pressed="true"] span{color:var(--on-pink)}
+.inputs{display:grid;grid-template-columns:1fr 1.4fr;gap:14px}
+.inputs label{display:flex;flex-direction:column;gap:6px;font-weight:800;font-size:.92rem;min-width:0}
+.inputs input{font:inherit;font-weight:600;color:var(--ink);background:var(--bg);border:2px solid var(--line);border-radius:14px;padding:12px 14px;width:100%}
+.inputs input:focus{outline:none;border-color:var(--pink)}
+
+/* récap */
+.order{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+.recap{background:var(--paper);border:2px dashed var(--pink);border-radius:28px;padding:24px;position:relative}
+.recap h3{font-family:var(--f-display);font-weight:400;font-size:2rem;margin-bottom:12px}
+.recap ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.recap li{display:flex;justify-content:space-between;gap:12px;font-weight:700;font-variant-numeric:tabular-nums}
+.recap li .dot{display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--c);margin-right:8px;vertical-align:-1px}
+.recap .empty{color:var(--muted);font-weight:600}
+.recap .tot{margin-top:14px;padding-top:14px;border-top:2px dashed var(--line);display:flex;justify-content:space-between;align-items:baseline}
+.recap .tot b{font-family:var(--f-display);font-weight:400;font-size:2.6rem;color:var(--pink);line-height:1}
+.recap .when{margin-top:14px;display:grid;gap:6px;font-weight:700}
+.recap .when div{display:flex;gap:8px;align-items:center}
+.recap .when .miss{color:var(--muted);font-weight:600}
+.msg{background:var(--bg);border-radius:20px;padding:18px 18px 14px;position:relative}
+.msg .bubble{background:#dcf8c6;color:#111b21;border-radius:14px 14px 14px 4px;padding:12px 14px;font-size:.92rem;white-space:pre-wrap;word-wrap:break-word;line-height:1.45;box-shadow:0 1px 0 rgba(0,0,0,.08)}
+.msg .lbl{font-size:.75rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.btn-wa{width:100%;margin-top:16px;background:var(--wa);color:#fff;box-shadow:0 12px 24px -12px var(--wa);font-size:1.1rem}
+.btn-wa:hover{transform:translateY(-2px)}
+.btn-wa[aria-disabled="true"]{opacity:.45;pointer-events:none;box-shadow:none}
+.hint{margin-top:10px;font-size:.88rem;color:var(--muted);text-align:center;font-weight:600}
+.hint.err{color:var(--pink)}
+.num{margin-top:12px;text-align:center;font-size:.85rem;color:var(--muted)}
+.num b{color:var(--ink);user-select:all}
+
+/* infos */
+.infos{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;padding-block:8px}
+.info{display:flex;gap:14px;align-items:flex-start}
+.info svg{flex:none;width:40px;height:40px}
+.info h3{font-family:var(--f-hand);font-weight:700;font-size:1.6rem;margin-bottom:4px}
+.info p{color:var(--muted);font-size:.95rem}
+
+footer{padding-block:56px calc(110px + env(safe-area-inset-bottom,0px));text-align:center;color:var(--muted)}
+footer .city{width:min(320px,80%);height:auto;color:var(--ink);opacity:.8}
+footer p{margin-top:10px;font-weight:700}
+footer .hand{font-family:var(--f-hand);font-size:1.6rem;color:var(--pink);font-weight:700}
+
+/* barre mobile */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:20;padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:var(--paper);border-top:2px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px;transform:translateY(110%);transition:transform .25s ease;box-shadow:0 -10px 30px -20px rgba(0,0,0,.4)}
+.bar.show{transform:none}
+.bar .t{font-weight:800;line-height:1.2}
+.bar .t b{font-family:var(--f-display);font-weight:400;font-size:1.8rem;color:var(--pink)}
+.bar .btn{padding:12px 20px;font-size:.98rem}
+
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;gap:28px;text-align:center}
+  .hero-text{order:-1;display:flex;flex-direction:column;align-items:center}
+  .hero-text .sub{margin-inline:auto}
+  .checks{text-align:left}
+  .cta-row{justify-content:center}
+  .hero-photo{width:min(78%,360px)}
+  .products{grid-template-columns:1fr;max-width:420px;margin-inline:auto}
+  .card{display:grid;grid-template-columns:110px 1fr;text-align:left;align-items:center;gap:6px 16px;padding:16px}
+  .card .thumb{grid-row:span 4;width:110px;border-width:4px}
+  .card .cname{margin-top:0;justify-self:start;font-size:1.8rem}
+  .card .cdesc{min-height:0;font-size:.88rem}
+  .card .stepper{justify-self:start}
+  .order,.infos{grid-template-columns:1fr}
+  .inputs{grid-template-columns:1fr}
+}
+@media (max-width:420px){
+  .price .brush{font-size:3.6rem}
+  .price{right:-8px}
+  .checks{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="clover" viewBox="0 0 40 40">
+      <circle cx="20" cy="10.5" r="8" fill="currentColor"/><circle cx="29.5" cy="20" r="8" fill="currentColor"/>
+      <circle cx="20" cy="29.5" r="8" fill="currentColor"/><circle cx="10.5" cy="20" r="8" fill="currentColor"/>
+      <circle cx="20" cy="20" r="4" fill="#f4d58d" stroke="#c9a24a" stroke-width="1.2"/>
+      <circle cx="17" cy="8" r="2.2" fill="#fff" opacity=".55"/><circle cx="27" cy="17.5" r="2.2" fill="#fff" opacity=".55"/>
+    </symbol>
+    <symbol id="check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="var(--pink)"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="heart" viewBox="0 0 60 54"><path d="M30 50C14 38 4 29 4 17 4 9 10 4 17 4c6 0 10 4 13 9 3-5 7-9 13-9 7 0 13 5 13 13 0 12-10 21-26 33z" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 8l-2-6M8 2 6-3M54 8l5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+    <symbol id="pin" viewBox="0 0 24 24"><path d="M12 22s7-7.2 7-12.5A7 7 0 0 0 5 9.5C5 14.8 12 22 12 22z" fill="var(--ink)"/><circle cx="12" cy="9.5" r="2.6" fill="var(--bg)"/></symbol>
+    <symbol id="wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm5.8 14.03c-.24.68-1.42 1.3-1.95 1.35-.5.05-.97.23-3.27-.68-2.77-1.09-4.52-3.92-4.66-4.1-.13-.18-1.12-1.49-1.12-2.84s.71-2.01.96-2.29c.25-.27.55-.34.73-.34l.52.01c.17 0 .39-.06.61.47.24.56.79 1.92.86 2.06.07.14.11.3.02.48-.09.18-.14.3-.27.46-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.52 1.9 1.05.93 1.93 1.22 2.2 1.36.27.14.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.61-.14.25.09 1.59.75 1.86.89.27.14.45.2.52.32.07.11.07.66-.17 1.34z"/></symbol>
+  </defs>
+</svg>
+
+<div class="wrap">
+  <header class="top">
+    <a class="logo" href="#top" id="top"><svg style="color:var(--pink)"><use href="#clover"/></svg>Petit Trèfle</a>
+    <span class="where"><svg width="16" height="16"><use href="#pin"/></svg>Montpellier</span>
+  </header>
+
+  <div class="hero">
+    <div class="hero-photo">
+      <svg class="heart" viewBox="0 0 60 54"><use href="#heart"/></svg>
+      <div class="frame"><img src="img/bracelets.jpg" alt="Trois bracelets trèfle en cristaux bleus, verts et roses sur un présentoir en velours" width="796" height="1040"></div>
+      <div class="price"><span class="brush">7€</span><small>la pièce</small></div>
+    </div>
+
+    <div class="hero-text">
+      <span class="kicker">Coucou Montpellier ♡</span>
+      <h1>Je vends des <span class="b"><span class="hl">bracelets</span></span></h1>
+      <p class="sub">Des petits trèfles en cristal sur une chaîne dorée. <strong>3 couleurs, 7 € pièce</strong>, à récupérer en main propre.</p>
+      <ul class="checks">
+        <li><svg><use href="#check"/></svg>Résistant</li>
+        <li><svg><use href="#check"/></svg>Ne noircit pas</li>
+        <li><svg><use href="#check"/></svg>Qualité durable</li>
+        <li><svg><use href="#check"/></svg>Élégant et féminin</li>
+      </ul>
+      <div class="cta-row">
+        <a class="btn btn-pink" href="#boutique">Je choisis mes bracelets</a>
+        <span class="tag-steel">En acier inoxydable</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ribbon-wrap" aria-hidden="true"><div class="ribbon"><div class="ribbon-track" id="ribbon"></div></div></div>
+
+<main class="wrap">
+  <section class="block" id="boutique">
+    <div class="sec-head">
+      <span class="step">Étape 1 · Les modèles</span>
+      <h2>Choisis ta <span class="hl">couleur</span></h2>
+      <p>Mélange les couleurs comme tu veux. Le total se calcule tout seul.</p>
+    </div>
+    <div class="products" id="products"></div>
+  </section>
+
+  <section class="block" id="creneau">
+    <div class="sec-head">
+      <span class="step">Étape 2 · La remise en main propre</span>
+      <h2>On se voit <span class="hl">quand ?</span></h2>
+      <p>Choisis un jour et un créneau qui t'arrangent sur Montpellier. On confirme le lieu ensemble sur WhatsApp.</p>
+    </div>
+    <div class="panel">
+      <div class="field">
+        <div class="label">Le jour <small id="dayLabel">Aucun jour choisi</small></div>
+        <div class="days" id="days" role="group" aria-label="Jour de récupération"></div>
+      </div>
+      <div class="field">
+        <div class="label">Le créneau</div>
+        <div class="slots" id="slots" role="group" aria-label="Créneau horaire"></div>
+      </div>
+      <div class="field inputs">
+        <label for="name">Ton prénom<input id="name" autocomplete="given-name" placeholder="Ex. Léa" maxlength="40"></label>
+        <label for="note">Un petit mot <span style="font-weight:600;color:var(--muted)">(facultatif)</span><input id="note" placeholder="Ex. plutôt vers la Comédie, c'est pour offrir…" maxlength="160"></label>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="reserver">
+    <div class="sec-head">
+      <span class="step">Étape 3 · Envoyer</span>
+      <h2>Je <span class="hl">réserve</span></h2>
+      <p>Le message est déjà écrit. Tu n'as plus qu'à l'envoyer sur WhatsApp. Pas de paiement en ligne : tu paies à la remise.</p>
+    </div>
+    <div class="order">
+      <div class="recap">
+        <h3>Ta commande</h3>
+        <ul id="recapList"></ul>
+        <div class="tot"><span style="font-weight:800">Total</span><b id="recapTotal">0 €</b></div>
+        <div class="when" id="recapWhen"></div>
+      </div>
+      <div>
+        <div class="msg">
+          <div class="lbl"><svg width="16" height="16" style="color:var(--wa)"><use href="#wa"/></svg>Aperçu du message</div>
+          <div class="bubble" id="preview"></div>
+        </div>
+        <a class="btn btn-wa" id="waBtn" href="#" target="_blank" rel="noopener" aria-disabled="true"><svg width="24" height="24"><use href="#wa"/></svg>Envoyer sur WhatsApp</a>
+        <p class="hint" id="hint">Choisis au moins un bracelet, un jour et un créneau.</p>
+        <p class="num">WhatsApp ne s'ouvre pas ? Écris au <b>07 82 61 48 61</b></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="infos">
+      <div class="info"><svg viewBox="0 0 40 40" style="color:var(--blue)"><use href="#clover"/></svg><div><h3>Acier inoxydable</h3><p>Ne noircit pas, ne rouille pas. Tu peux le garder tous les jours.</p></div></div>
+      <div class="info"><svg viewBox="0 0 40 40" style="color:var(--green)"><use href="#clover"/></svg><div><h3>En main propre</h3><p>Uniquement sur Montpellier, au jour et au créneau que tu choisis.</p></div></div>
+      <div class="info"><svg viewBox="0 0 40 40" style="color:var(--rose)"><use href="#clover"/></svg><div><h3>Paiement sur place</h3><p>Rien à payer en ligne. Tu règles au moment de la remise.</p></div></div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <svg class="city" viewBox="0 0 320 90" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">
+    <path d="M4 86h312"/>
+    <path d="M14 86V52h34v34M18 58h6v8h-6zM30 58h6v8h-6zM18 72h6v8h-6zM40 58h4v8h-4z"/>
+    <path d="M56 86V30l10-16 10 16v56M62 40h8M62 52h8M66 14V6"/>
+    <path d="M84 86V48h18v38M84 48l9-8 9 8"/>
+    <path d="M118 86V40h84v46M118 40h84M114 34h92v6h-92zM142 86V62a18 18 0 0 1 36 0v24M126 50h8v8h-8zM186 50h8v8h-8zM154 30v-6h12v6M160 24v-8M156 20h8"/>
+    <path d="M214 86V50h30v36M218 56h6v8h-6zM232 56h6v8h-6zM214 50l15-10 15 10"/>
+    <path d="M252 86V26l9-14 9 14v60M256 38h10M256 50h10M261 12V4"/>
+    <path d="M278 86V56h34v30M284 62h6v8h-6zM298 62h6v8h-6zM290 86v-10h8v10"/>
+  </svg>
+  <p class="hand">Merci de soutenir une petite créatrice ♡</p>
+  <p>Petit Trèfle · Bracelets à 7 € · Remise en main propre sur Montpellier</p>
+</footer>
+
+<div class="bar" id="bar" aria-hidden="true">
+  <div class="t"><span id="barCount">0 bracelet</span><br><b id="barTotal">0 €</b></div>
+  <a class="btn btn-pink" href="#creneau" id="barBtn" tabindex="-1">Choisir mon créneau</a>
+</div>
+
+<script>
+/* ====== À personnaliser ====== */
+const CONFIG = {
+  phone: "33782614861",             // numéro WhatsApp, format international sans + ni espaces
+  price: 7,                         // prix à la pièce en €
+  maxPerColor: 10,
+  daysAhead: 14,                    // nombre de jours proposés
+  closedWeekdays: [],               // jours sans remise : 0 = dimanche, 1 = lundi…
+  slots: [
+    { id: "matin", time: "10h – 12h", label: "Le matin" },
+    { id: "midi",  time: "12h – 14h", label: "Pause déj" },
+    { id: "aprem", time: "14h – 17h", label: "L'après-midi" },
+    { id: "fin",   time: "17h – 19h", label: "Fin de journée" },
+    { id: "soir",  time: "19h – 21h", label: "En soirée" },
+  ],
+  products: [
+    { id: "bleu", name: "Bleu", color: "var(--blue)", img: "img/bleu.jpg", desc: "Saphir & bleu ciel, pour un look frais." },
+    { id: "vert", name: "Vert", color: "var(--green)", img: "img/vert.jpg", desc: "Émeraude & vert pomme, le trèfle porte-bonheur." },
+    { id: "rose", name: "Rose", color: "var(--rose)", img: "img/rose.jpg", desc: "Fuchsia & rose poudré, le plus girly." },
+  ],
+};
+/* ============================= */
+
+const state = { qty: Object.fromEntries(CONFIG.products.map(p => [p.id, 0])), day: null, slot: null };
+const $ = id => document.getElementById(id);
+const euro = n => n + " €";
+const plural = (n, w) => n + " " + w + (n > 1 ? "s" : "");
+
+// ruban
+const words = ["Acier inoxydable", "Ne noircit pas", "7 € la pièce", "Bleu · Vert · Rose", "En main propre sur Montpellier", "Élégant et féminin"];
+const chunk = words.map(w => `<span>${w} <svg width="22" height="22" style="color:#fff"><use href="#clover"/></svg></span>`).join("");
+$("ribbon").innerHTML = chunk + chunk;
+
+// produits
+$("products").innerHTML = CONFIG.products.map(p => `
+  <article class="card" id="card-${p.id}" style="--c:${p.color}">
+    <div class="thumb"><img src="${p.img}" alt="Bracelet trèfle ${p.name.toLowerCase()}" loading="lazy" width="360" height="360"></div>
+    <h3 class="cname">${p.name}</h3>
+    <p class="cdesc">${p.desc}</p>
+    <div class="stepper" role="group" aria-label="Quantité ${p.name}">
+      <button type="button" id="minus-${p.id}" aria-label="Retirer un bracelet ${p.name}">−</button>
+      <output id="q-${p.id}" aria-live="polite">0</output>
+      <button type="button" id="plus-${p.id}" aria-label="Ajouter un bracelet ${p.name}">+</button>
+    </div>
+    <div class="sub-price" id="sp-${p.id}"></div>
+  </article>`).join("");
+CONFIG.products.forEach(p => {
+  $("minus-" + p.id).onclick = () => { state.qty[p.id] = Math.max(0, state.qty[p.id] - 1); render(); };
+  $("plus-" + p.id).onclick = () => { state.qty[p.id] = Math.min(CONFIG.maxPerColor, state.qty[p.id] + 1); render(); };
+});
+
+// jours
+const fmtW = new Intl.DateTimeFormat("fr-FR", { weekday: "short" });
+const fmtM = new Intl.DateTimeFormat("fr-FR", { month: "short" });
+const fmtLong = new Intl.DateTimeFormat("fr-FR", { weekday: "long", day: "numeric", month: "long" });
+const days = [];
+const today = new Date(); today.setHours(12, 0, 0, 0);
+for (let i = 0; days.length < CONFIG.daysAhead && i < 60; i++) {
+  const d = new Date(today); d.setDate(today.getDate() + i);
+  if (CONFIG.closedWeekdays.includes(d.getDay())) continue;
+  days.push({ key: d.toISOString().slice(0, 10), d, rel: i === 0 ? "Auj." : i === 1 ? "Demain" : null });
+}
+$("days").innerHTML = days.map(x => `
+  <button type="button" class="day" id="day-${x.key}" aria-pressed="false" aria-label="${fmtLong.format(x.d)}">
+    <span class="dw">${x.rel || fmtW.format(x.d).replace(".", "")}</span>
+    <span class="dn">${x.d.getDate()}</span>
+    <span class="dm">${fmtM.format(x.d).replace(".", "")}</span>
+  </button>`).join("");
+days.forEach(x => $("day-" + x.key).onclick = () => { state.day = x; render(); });
+
+// créneaux
+$("slots").innerHTML = CONFIG.slots.map(s => `
+  <button type="button" class="slot" id="slot-${s.id}" aria-pressed="false"><b>${s.time}</b><span>${s.label}</span></button>`).join("");
+CONFIG.slots.forEach(s => $("slot-" + s.id).onclick = () => { state.slot = s; render(); });
+
+$("name").addEventListener("input", render);
+$("note").addEventListener("input", render);
+
+function dayText() {
+  if (!state.day) return null;
+  const i = Math.round((state.day.d - today) / 864e5);
+  const base = fmtLong.format(state.day.d);
+  return i === 0 ? "aujourd'hui (" + base + ")" : i === 1 ? "demain (" + base + ")" : "le " + base;
+}
+
+function buildMessage() {
+  const items = CONFIG.products.filter(p => state.qty[p.id] > 0);
+  const count = items.reduce((s, p) => s + state.qty[p.id], 0);
+  const name = $("name").value.trim();
+  const note = $("note").value.trim();
+  const lines = ["Bonjour ! 💖", ""];
+  if (items.length === 1 && count === 1) {
+    lines.push(`Je suis intéressé(e) par le bracelet trèfle ${items[0].name.toLowerCase()}.`);
+  } else if (items.length) {
+    lines.push("Je suis intéressé(e) par les bracelets trèfle :");
+    items.forEach(p => lines.push(`• ${state.qty[p.id]} × ${p.name}`));
+  } else {
+    lines.push("Je suis intéressé(e) par les bracelets trèfle : [couleur à choisir]");
+  }
+  lines.push(`Total : ${euro(count * CONFIG.price)}${count > 1 ? ` (${count} bracelets)` : ""}`, "");
+  lines.push(`Je suis disponible ${dayText() || "[jour à choisir]"}, ${state.slot ? "entre " + state.slot.time.replace(" – ", " et ") : "[créneau à choisir]"}, pour une remise en main propre sur Montpellier.`);
+  if (note) lines.push("", note);
+  lines.push("", name ? `Merci ! ${name}` : "Merci !");
+  return { text: lines.join("\n"), count };
+}
+
+function render() {
+  let count = 0;
+  CONFIG.products.forEach(p => {
+    const q = state.qty[p.id]; count += q;
+    $("q-" + p.id).textContent = q;
+    $("minus-" + p.id).disabled = q === 0;
+    $("plus-" + p.id).disabled = q >= CONFIG.maxPerColor;
+    $("card-" + p.id).classList.toggle("on", q > 0);
+    $("sp-" + p.id).textContent = q ? `${q} × 7 € = ${euro(q * CONFIG.price)}` : "";
+  });
+  days.forEach(x => $("day-" + x.key).setAttribute("aria-pressed", state.day === x));
+  CONFIG.slots.forEach(s => $("slot-" + s.id).setAttribute("aria-pressed", state.slot === s));
+  $("dayLabel").textContent = state.day ? fmtLong.format(state.day.d) : "Aucun jour choisi";
+
+  const total = count * CONFIG.price;
+  const items = CONFIG.products.filter(p => state.qty[p.id] > 0);
+  $("recapList").innerHTML = items.length
+    ? items.map(p => `<li style="--c:${p.color}"><span><span class="dot"></span>${state.qty[p.id]} × Trèfle ${p.name.toLowerCase()}</span><span>${euro(state.qty[p.id] * CONFIG.price)}</span></li>`).join("")
+    : `<li class="empty">Aucun bracelet pour l'instant</li>`;
+  $("recapTotal").textContent = euro(total);
+  $("recapWhen").innerHTML = `
+    <div>📅 ${state.day ? `<span>${fmtLong.format(state.day.d)}</span>` : `<span class="miss">Jour à choisir</span>`}</div>
+    <div>🕐 ${state.slot ? `<span>${state.slot.time}</span>` : `<span class="miss">Créneau à choisir</span>`}</div>
+    <div>📍 <span>En main propre, Montpellier</span></div>`;
+
+  const { text } = buildMessage();
+  $("preview").textContent = text;
+
+  const missing = [];
+  if (!count) missing.push("au moins un bracelet");
+  if (!state.day) missing.push("un jour");
+  if (!state.slot) missing.push("un créneau");
+  const ok = missing.length === 0;
+  const wa = $("waBtn");
+  wa.setAttribute("aria-disabled", String(!ok));
+  wa.href = ok ? `https://wa.me/${CONFIG.phone}?text=${encodeURIComponent(text)}` : "#";
+  $("hint").textContent = ok ? "WhatsApp va s'ouvrir avec ton message. Il ne reste qu'à appuyer sur Envoyer." : "Il manque : " + missing.join(", ") + ".";
+
+  $("barCount").textContent = plural(count, "bracelet");
+  $("barTotal").textContent = euro(total);
+  const step = !state.day || !state.slot ? ["#creneau", "Choisir mon créneau"] : ["#reserver", "Réserver"];
+  $("barBtn").href = step[0]; $("barBtn").textContent = step[1];
+  updateBar();
+}
+
+// barre fixe : visible quand il y a des bracelets et que le récap n'est pas à l'écran
+let recapVisible = false;
+function updateBar() {
+  const count = Object.values(state.qty).reduce((a, b) => a + b, 0);
+  const show = count > 0 && !recapVisible;
+  $("bar").classList.toggle("show", show);
+  $("bar").setAttribute("aria-hidden", String(!show));
+  $("barBtn").tabIndex = show ? 0 : -1;
+}
+if ("IntersectionObserver" in window) {
+  new IntersectionObserver(([e]) => { recapVisible = e.isIntersecting; updateBar(); }, { threshold: .15 }).observe($("reserver"));
+}
+
+$("waBtn").addEventListener("click", e => { if ($("waBtn").getAttribute("aria-disabled") === "true") e.preventDefault(); });
+
+render();
+</script>
+</body>
+</html>
