@@ -194,11 +194,19 @@ footer .hand{font-family:var(--f-hand);font-size:1.6rem;color:var(--pink);font-w
 
 @media (max-width:860px){
   .hero{grid-template-columns:1fr;gap:28px;text-align:center}
-  .hero-text{order:-1;display:flex;flex-direction:column;align-items:center}
+  .hero{padding-block:4px 36px;gap:26px}
+  .hero-text{display:flex;flex-direction:column;align-items:center}
+  .hero-text .kicker{font-size:1.5rem}
   .hero-text .sub{margin-inline:auto}
   .checks{text-align:left}
   .cta-row{justify-content:center}
-  .hero-photo{width:min(78%,360px)}
+  .hero-photo{width:min(94%,440px)}
+  .hero-photo .frame{aspect-ratio:5/4;transform:rotate(-2deg);border-width:6px}
+  .hero-photo .frame img{object-position:50% 58%}
+  .hero-photo .heart{width:42px;left:-6px;top:-14px}
+  .price{bottom:-14px;right:-6px}
+  .price .brush{font-size:3.4rem}
+  .price small{font-size:1.3rem}
   .products{grid-template-columns:1fr;max-width:420px;margin-inline:auto}
   .card{display:grid;grid-template-columns:110px 1fr;text-align:left;align-items:center;gap:6px 16px;padding:16px}
   .card .thumb{grid-row:span 4;width:110px;border-width:4px}
@@ -246,9 +254,9 @@ footer .hand{font-family:var(--f-hand);font-size:1.6rem;color:var(--pink);font-w
     </div>
 
     <div class="hero-text">
-      <span class="kicker">Coucou Montpellier ♡</span>
-      <h1>Je vends des <span class="b"><span class="hl">bracelets</span></span></h1>
-      <p class="sub">Des petits trèfles en cristal sur une chaîne dorée. <strong>3 couleurs, 7 € pièce</strong>, à récupérer en main propre.</p>
+      <span class="kicker">Nouvelle collection ♡</span>
+      <h1>Le bracelet <span class="b"><span class="hl">trèfle</span></span></h1>
+      <p class="sub">Cristaux sertis sur acier inoxydable doré. <strong>3 couleurs, 7 € pièce</strong>, remis en main propre à Montpellier.</p>
       <ul class="checks">
         <li><svg><use href="#check"/></svg>Résistant</li>
         <li><svg><use href="#check"/></svg>Ne noircit pas</li>
